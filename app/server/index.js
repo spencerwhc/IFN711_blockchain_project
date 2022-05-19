@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static assets
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.use('/', require('./routes'));
+app.use('/api', require('./routes'));
 
 // If none of the above matched, render client views
 // app.get('/*', (_, res) =>
