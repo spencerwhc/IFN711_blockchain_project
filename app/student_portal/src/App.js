@@ -1,36 +1,35 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Generate from './pages/generate-report';
+import View from './pages/view-report';
 import './App.css';
 // Import Services
-import { checkHealth } from './service/api';
+// import { checkHealth } from './service/api';
 
 function App() {
-  const handleclick = async () => {
-    try {
-      const result = await checkHealth();
-      console.log(result.data, 'resultresult');
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleclick = async () => {
+  //   try {
+  //     const result = await checkHealth();
+  //     console.log(result.data, 'resultresult');
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-      <button onClick={handleclick}>Click to check health</button>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/generate' element={<Generate />} />
+        <Route path='/' element={<View />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
+// return (
+//   <div className='App'>
+//     <button onClick={handleclick}>Click to check health</button>
+//   </div>
+// );
+// }
