@@ -39,7 +39,12 @@ export default function ActionTableButton() {
       </ButtonGroup>
 
       {/* Share confirmation modal */}
-      <Dialog open={shareConfirm} onClose={closeShareConfirm}>
+      <Dialog
+        open={shareConfirm}
+        onClose={closeShareConfirm}
+        maxWidth='md'
+        fullWidth={true}
+      >
         <Box sx={{ height: '57px', backgroundColor: '#363636' }}>
           <Close
             className={styles.customCloseIcon}
@@ -66,7 +71,7 @@ export default function ActionTableButton() {
         </DialogActions>
       </Dialog>
       {/* Share Modal */}
-      <Dialog open={share} onClose={closeShare}>
+      <Dialog open={share} onClose={closeShare} maxWidth='md' fullWidth={true}>
         <Box sx={{ height: '57px', backgroundColor: '#363636' }}>
           <Close className={styles.customCloseIcon} onClick={closeShare} />
         </Box>

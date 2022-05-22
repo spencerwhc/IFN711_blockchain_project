@@ -9,7 +9,12 @@ import Modal from '@mui/material/Modal';
 import { Link } from 'react-router-dom';
 import Close from '@mui/icons-material/Close';
 import Badge from '@mui/material/Badge';
-import { maxWidth } from '@mui/system';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
 
 export default function Generate() {
   const [counter, setCounter] = useState(0);
@@ -63,6 +68,7 @@ export default function Generate() {
           </button>
         </div>
       </div>
+
       <Modal open={generate} disableBackdropClick>
         <Box className={styles.customModal}>
           <Box sx={{ height: '57px', backgroundColor: '#363636' }}>
@@ -94,26 +100,31 @@ export default function Generate() {
           </Box>
         </Box>
       </Modal>
-      <Modal open={generateCancel} disableBackdropClick>
-        <Box className={styles.customModal}>
-          <Box sx={{ height: '57px', backgroundColor: '#363636' }}>
-            <Close
-              className={styles.customCloseIcon}
-              onClick={closeGenerateError}
-            />
-          </Box>
-          <Box sx={{ my: '50px' }}>
-            <h1>No Assessment Selected</h1>
-            <p>Please select at least one assessment to generate a report</p>
-          </Box>
-          <button
-            className={styles.customModalButtonBlue}
+      <Dialog open={generateCancel} maxWidth='md' fullWidth={true}>
+        <Box sx={{ height: '57px', backgroundColor: '#363636' }}>
+          <Close
+            className={styles.customCloseIcon}
             onClick={closeGenerateError}
+          />
+        </Box>
+        <DialogTitle sx={{ fontWeight: '600', textAlign: 'center' }}>
+          No Assessment Selected
+        </DialogTitle>
+        <DialogContent sx={{ textAlign: 'center' }}>
+          <DialogContentText id='alert-dialog-description'>
+            Please select at least one assessment to generate a report
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions sx={{ justifyContent: 'center', marginBottom: '20px' }}>
+          <Button
+            onClick={closeGenerateError}
+            variant='contained'
+            sx={{ width: '100px' }}
           >
             Ok
-          </button>
-        </Box>
-      </Modal>
+          </Button>
+        </DialogActions>
+      </Dialog>
       <Row>
         <CustomDropdownList
           counter={(n) => likeDislikeMutate(n)}
