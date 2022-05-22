@@ -2,9 +2,7 @@ import { ButtonGroup } from 'react-bootstrap';
 import styles from '../styles/Home.module.css';
 import { EyeFill, ShareFill, CloudArrowDownFill } from 'react-bootstrap-icons';
 import { useState } from 'react';
-import { Row } from 'react-bootstrap';
 import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import Close from '@mui/icons-material/Close';
 import Dialog from '@mui/material/Dialog';
@@ -20,7 +18,6 @@ export default function ActionTableButton() {
   const [shareConfirm, setShareConfirm] = useState(false);
   // you can change the function here if you need to do multiple fucntions
   const openView = () => setView(true);
-  const closeView = () => setView(false);
   const openShare = () => setShare(true);
   const closeShare = () => setShare(false);
   const openShareConfirm = () => {
@@ -29,25 +26,18 @@ export default function ActionTableButton() {
   };
   const closeShareConfirm = () => setShareConfirm(false);
   return (
-    <ButtonGroup>
-      <button onClick={openView} className={styles.btnLogo}>
-        <EyeFill />
-      </button>
-      View
-      <Modal open={view} disableBackdropClick>
-        <Box className={styles.customModal}>
-          <Close className={styles.customCloseIcon} onClick={closeView} />
-          <p>Insert PDF data here</p>
-        </Box>
-      </Modal>
-      <button className={styles.btnLogo}>
-        <CloudArrowDownFill />
-      </button>
-      Download
-      <button onClick={openShare} className={styles.btnLogo}>
-        <ShareFill />
-      </button>
-      Share
+    <>
+      <ButtonGroup>
+        <button onClick={openView} className={styles.btnLogo}>
+          <EyeFill /> &nbsp; View
+        </button>
+        &nbsp; &nbsp;
+        <button onClick={openShare} className={styles.btnLogo}>
+          <ShareFill />
+          &nbsp; Share
+        </button>
+      </ButtonGroup>
+
       {/* Share confirmation modal */}
       <Dialog open={shareConfirm} onClose={closeShareConfirm}>
         <Box sx={{ height: '57px', backgroundColor: '#363636' }}>
@@ -102,6 +92,6 @@ export default function ActionTableButton() {
           </Button>
         </DialogActions>
       </Dialog>
-    </ButtonGroup>
+    </>
   );
 }
