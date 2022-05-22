@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import styles from '../styles/Home.module.css';
+import styles from '../../styles/Home.module.css';
 import CustomDropdownItem from './CustomDropdownItem';
 import { ChevronCompactDown, ChevronCompactUp } from 'react-bootstrap-icons';
 

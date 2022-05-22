@@ -10,14 +10,11 @@ import Close from '@mui/icons-material/Close';
 
 export default function ActionTableButton() {
     const [view, setView] = useState(false);
-    const [download, setDownload] = useState(false);
     const [share, setShare] = useState(false);
     const [shareConfirm, setShareConfirm] = useState(false);
-    // you can change the fucntion here if you need to do multiple fucntions
+    // you can change the function here if you need to do multiple fucntions
     const openView = () => setView(true);
     const closeView = () => setView(false);
-    const openDownload = () => setDownload(true);
-    const closeDownload = () => setDownload(false);
     const openShare = () => setShare(true);
     const closeShare = () => setShare(false);
     const openShareConfirm = () => {
@@ -37,23 +34,10 @@ export default function ActionTableButton() {
                     <p>Insert PDF data here</p>
                 </Box>
             </Modal>
-            <button onClick={openDownload} className={styles.btnLogo}>
+            <button className={styles.btnLogo}>
                 <CloudArrowDownFill />
             </button>
             Download
-            <Modal open={download} disableBackdropClick>
-                <Box className={styles.customModal}>
-                    <Close className={styles.customCloseIcon} onClick={closeDownload} />
-                    <h1>Download Report</h1>
-                    <p>Do you want to Download this report?</p>
-                    <button className={styles.customModalButtonBlue} onClick={closeDownload}>
-                        OK
-                    </button>
-                    <button className={styles.customModalButtonWhite} onClick={closeDownload}>
-                        Cancel
-                    </button>
-                </Box>
-            </Modal>
             <button onClick={openShare} className={styles.btnLogo}>
                 <ShareFill />
             </button>
