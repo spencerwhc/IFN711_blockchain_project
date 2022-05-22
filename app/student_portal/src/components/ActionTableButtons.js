@@ -48,12 +48,16 @@ export default function ActionTableButton() {
         <ShareFill />
       </button>
       Share
-      <Dialog open={shareConfirm} onClose={closeShare}>
+      {/* Share confirmation modal */}
+      <Dialog open={shareConfirm} onClose={closeShareConfirm}>
         <Box sx={{ height: '57px', backgroundColor: '#363636' }}>
-          <Close className={styles.customCloseIcon} onClick={closeShare} />
+          <Close
+            className={styles.customCloseIcon}
+            onClick={closeShareConfirm}
+          />
         </Box>
         <DialogTitle sx={{ fontWeight: '600', textAlign: 'center' }}>
-          Share Report
+          Report Shared
         </DialogTitle>
         <DialogContent sx={{ textAlign: 'center' }}>
           <DialogContentText id='alert-dialog-description'>
@@ -61,7 +65,7 @@ export default function ActionTableButton() {
             your email.
           </DialogContentText>
         </DialogContent>
-        <DialogActions sx={{ justifyContent: 'center' }}>
+        <DialogActions sx={{ justifyContent: 'center', marginBottom: '20px' }}>
           <Button
             onClick={closeShareConfirm}
             variant='contained'
@@ -71,6 +75,7 @@ export default function ActionTableButton() {
           </Button>
         </DialogActions>
       </Dialog>
+      {/* Share Modal */}
       <Dialog open={share} onClose={closeShare}>
         <Box sx={{ height: '57px', backgroundColor: '#363636' }}>
           <Close className={styles.customCloseIcon} onClick={closeShare} />
