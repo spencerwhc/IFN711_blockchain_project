@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { Link } from 'react-router-dom';
+import '../styles/NavTabStyle.css';
 
 export default function NavTabs() {
   const [value, setValue] = React.useState(0);
@@ -13,14 +14,14 @@ export default function NavTabs() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', bgcolor: '#001E36' }}>
       <Tabs
         value={value}
         onChange={handleChange}
         TabIndicatorProps={{
           style: {
-            display: 'none',
-          },
+            display: 'none'
+          }
         }}
         aria-label='nav tabs example'
       >
