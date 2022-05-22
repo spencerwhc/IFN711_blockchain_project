@@ -123,6 +123,7 @@ async function evaluateTransaction(funcName, ...args) {
             console.log('Transaction evaluated');
             const bufferObject = JSON.parse(buffer.toString());
             // if you keep the object from the front-end
+            // console.log(bufferObject)
             // console.log(JSON.parse(bufferObject.Criteria));
             //this toString makes the array looks like a string when it prints
             console.log(`*** Result: ${prettyJSONString(buffer.toString())}`);
@@ -188,7 +189,7 @@ const getReport = function(rpt) {
 // addAssessment(ast, std); //showing in the command looks str inside str but you can get the object from the front-end in this way
 
 // now get is included in add
-// // getAssessment(ast);
+// getAssessment(ast);
 
 // we can include get to display here too
 // addReport(rpt);
