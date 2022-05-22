@@ -3,6 +3,7 @@ import Layout from '../components/layout';
 export default function Report() {
   return (
     <Container maxWidth='lg' sx={{ my: '30px' }}>
+      {/* Title */}
       <Box
         sx={{
           textAlign: 'center',
@@ -14,7 +15,15 @@ export default function Report() {
           Skills Report
         </Typography>
       </Box>
-      <Box sx={{ flexGrow: 1 }}>
+
+      {/* Course Info */}
+      <Box
+        sx={{
+          flexGrow: 1,
+          borderBottom: '2px solid black',
+          paddingBottom: '30px'
+        }}
+      >
         <Grid container spacing={2}>
           <Grid item xs={8}>
             <Typography variant='subtitle1' sx={{ fontWeight: 'bold' }}>
