@@ -12,13 +12,14 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function ActionTableButton() {
   const [share, setShare] = useState(false);
   const [shareConfirm, setShareConfirm] = useState(false);
   let navigate = useNavigate();
 
-  const openView = () => navigate('/report/R00001');
+  const openView = () => navigate('/report/R00001', { replace: false });
   const openShare = () => setShare(true);
   const closeShare = () => setShare(false);
   const openShareConfirm = () => {
@@ -29,9 +30,11 @@ export default function ActionTableButton() {
   return (
     <>
       <ButtonGroup className={styles.btnLogo}>
-        <button onClick={openView} className={styles.btnLogo}>
-          <EyeFill /> &nbsp; View
-        </button>
+        <Link to='/report/R00001' target='_blank'>
+          <button className={styles.btnLogo}>
+            <EyeFill /> &nbsp; View
+          </button>
+        </Link>
         &nbsp; &nbsp;
         <button onClick={openShare} className={styles.btnLogo}>
           <ShareFill />
