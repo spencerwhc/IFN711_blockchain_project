@@ -4,6 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { Link } from 'react-router-dom';
 import '../styles/NavTabStyle.css';
+import { Typography } from '@mui/material';
 
 export default function NavTabs() {
   const [value, setValue] = React.useState(0);
@@ -14,7 +15,14 @@ export default function NavTabs() {
   };
 
   return (
-    <Box sx={{ width: '100%', bgcolor: '#001E36' }}>
+    <Box
+      sx={{
+        width: '100%',
+        bgcolor: '#001E36',
+        justifyContent: 'space-between',
+        display: 'flex'
+      }}
+    >
       <Tabs
         value={value}
         onChange={handleChange}
@@ -33,6 +41,9 @@ export default function NavTabs() {
           value={1}
         />
       </Tabs>
+      <Box sx={{ alignItems: 'center', m: '0.7rem' }}>
+        <Typography sx={{ color: '#fff' }}> Byrant Tanadjaya </Typography>
+      </Box>
     </Box>
   );
 }
