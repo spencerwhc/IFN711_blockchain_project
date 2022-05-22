@@ -9,6 +9,7 @@ import Modal from '@mui/material/Modal';
 import { Link } from 'react-router-dom';
 import Close from '@mui/icons-material/Close';
 import Badge from '@mui/material/Badge';
+import { maxWidth } from '@mui/system';
 
 export default function Generate() {
   const [counter, setCounter] = useState(0);
@@ -64,22 +65,33 @@ export default function Generate() {
       </div>
       <Modal open={generate} disableBackdropClick>
         <Box className={styles.customModal}>
-          <Close className={styles.customCloseIcon} onClick={closeGenerate} />
-          <Row>
-            <p>
-              Are you sure you would like to proceed? This action cannot be
-              undone.
-            </p>
-          </Row>
-          <Link to='/'>
-            <button className={styles.customModalButtonBlue}>Yes</button>
-          </Link>
-          <button
-            className={styles.customModalButtonWhite}
-            onClick={closeGenerate}
+          <Box sx={{ height: '57px', backgroundColor: '#363636' }}>
+            <Close className={styles.customCloseIcon} onClick={closeGenerate} />
+          </Box>
+          <Box sx={{ my: '50px' }}>
+            <p>Are you sure you would like to proceed?</p>
+            <p>This action cannot be undone.</p>
+          </Box>
+
+          <Box
+            sx={{
+              textAlign: 'center',
+              display: 'flex',
+              justifyContent: 'space-between',
+              maxWidth: '400px',
+              ml: '234px'
+            }}
           >
-            No
-          </button>
+            <Link to='/'>
+              <button className={styles.customModalButtonBlue}>Yes</button>
+            </Link>
+            <button
+              className={styles.customModalButtonWhite}
+              onClick={closeGenerate}
+            >
+              No
+            </button>
+          </Box>
         </Box>
       </Modal>
       <Modal open={generateCancel} disableBackdropClick>
