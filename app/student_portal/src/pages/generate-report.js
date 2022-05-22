@@ -30,10 +30,10 @@ export default function Generate() {
         <div style={{ flex: '4' }}></div>
         <div style={{ flex: '10' }}>
           <p className={styles.generatePageTitle}>
-            to be included in the report
-          </p>
-          <p className={styles.generatePageTitle}>
-            The results of your CRA of each assessment will be included
+            Select the assessments to be included in the report
+            <p className={styles.generatePageSubtitle}>
+              The results of your CRA of each assessment will be included
+            </p>
           </p>
         </div>
         <div style={{ flex: '1' }}>
