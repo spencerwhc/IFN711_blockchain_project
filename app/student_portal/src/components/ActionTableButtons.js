@@ -11,13 +11,14 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 
 export default function ActionTableButton() {
-  const [view, setView] = useState(false);
   const [share, setShare] = useState(false);
   const [shareConfirm, setShareConfirm] = useState(false);
-  // you can change the function here if you need to do multiple fucntions
-  const openView = () => setView(true);
+  let navigate = useNavigate();
+
+  const openView = () => navigate('/report/R00001');
   const openShare = () => setShare(true);
   const closeShare = () => setShare(false);
   const openShareConfirm = () => {
@@ -27,7 +28,7 @@ export default function ActionTableButton() {
   const closeShareConfirm = () => setShareConfirm(false);
   return (
     <>
-      <ButtonGroup>
+      <ButtonGroup className={styles.btnLogo}>
         <button onClick={openView} className={styles.btnLogo}>
           <EyeFill /> &nbsp; View
         </button>
