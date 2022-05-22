@@ -61,23 +61,47 @@ export default function Report() {
             Course Experience &#38; Skills
           </Typography>
         </Grid>
-        <Grid item xs={12}>
-          <Typography
-            variant='subtitle1'
-            sx={{
-              fontWeight: 'bold',
-              paddingTop: '20px',
-              textDecoration: 'underline'
-            }}
-          >
-            IFN711: IT Industry Project
-          </Typography>
+
+        {/* Assessment 1 */}
+        <Grid container xs={12}>
+          <Grid item xs={11}>
+            <Typography
+              variant='subtitle1'
+              sx={{
+                fontWeight: 'bold',
+                paddingTop: '20px',
+                textDecoration: 'underline'
+              }}
+            >
+              IFN711: IT Industry Project
+            </Typography>
+          </Grid>
+          <Grid item xs={1}>
+            <Typography
+              variant='subtitle1'
+              sx={{
+                fontWeight: 'bold',
+                paddingTop: '20px',
+                textDecoration: 'underline'
+              }}
+            >
+              Semester 2
+            </Typography>
+          </Grid>
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <Typography variant='subtitle1' sx={{ fontWeight: 'bold' }}>
-            Project Plan
-          </Typography>
+          <Grid container>
+            <Grid item xs={11}>
+              <Typography variant='subtitle1' sx={{ fontWeight: 'bold' }}>
+                Project Plan
+              </Typography>
+            </Grid>
+            <Grid item xs={1}>
+              <Typography variant='text'>11/03/22</Typography>
+            </Grid>
+          </Grid>
+
           <List dense={true}>
             <ListItem>
               <ListItemText primary='1) Integrate advanced specialist disciplinary knowledge and skills in the context of an industry project ' />
