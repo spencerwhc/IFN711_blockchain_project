@@ -14,7 +14,16 @@ export default function NavTabs() {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Tabs value={value} onChange={handleChange} aria-label='nav tabs example'>
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        TabIndicatorProps={{
+          style: {
+            display: 'none',
+          },
+        }}
+        aria-label='nav tabs example'
+      >
         <Tab component={Link} label='view Reports' to='/' value={0} />
         <Tab
           component={Link}
