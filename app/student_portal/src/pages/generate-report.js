@@ -70,7 +70,7 @@ export default function Generate() {
           </Box>
           <Box sx={{ my: '50px' }}>
             <p>Are you sure you would like to proceed?</p>
-            <p>This action cannot be undone.</p>
+            <p>This action cannot be undone</p>
           </Box>
 
           <Box
@@ -96,17 +96,16 @@ export default function Generate() {
       </Modal>
       <Modal open={generateCancel} disableBackdropClick>
         <Box className={styles.customModal}>
-          <Close
-            className={styles.customCloseIcon}
-            onClick={closeGenerateError}
-          />
-          <Row>
-            <h1>No Report Generated</h1>
-            <p>
-              No assessments have been selected. Please select at least one to
-              generate a report.
-            </p>
-          </Row>
+          <Box sx={{ height: '57px', backgroundColor: '#363636' }}>
+            <Close
+              className={styles.customCloseIcon}
+              onClick={closeGenerateError}
+            />
+          </Box>
+          <Box sx={{ my: '50px' }}>
+            <h1>No Assessment Selected</h1>
+            <p>Please select at least one assessment to generate a report</p>
+          </Box>
           <button
             className={styles.customModalButtonBlue}
             onClick={closeGenerateError}
