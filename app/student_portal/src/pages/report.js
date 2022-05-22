@@ -2,6 +2,7 @@ import { Box, Container, Typography, Grid } from '@mui/material';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+
 export default function Report() {
   return (
     <Container maxWidth='lg' sx={{ my: '30px' }}>
@@ -117,6 +118,14 @@ export default function Report() {
             </ListItem>
           </List>
         </Grid>
+      </Box>
+
+      <Box sx={{ marginTop: '30px' }}>
+        <Box sx={{ textAlign: 'center', lineHeight: '0.5' }}>
+          <img src='/signature.png' alt='Karen Jen' width='230px' />
+          <p>Karen Jen</p>
+          <p>University Registrar</p>
+        </Box>
       </Box>
     </Container>
   );
