@@ -1,9 +1,10 @@
 
 .MuiTab-root{
     color: #fff;
+    font: 18px;
+    font-weight: 600;
 }
-
 .Mui-selected{
-    color:#001E36;
+    color: #001E36;
     background-color: #fff;
 }
