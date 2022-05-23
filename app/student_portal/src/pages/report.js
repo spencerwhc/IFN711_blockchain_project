@@ -6,6 +6,7 @@ import ListItemText from '@mui/material/ListItemText';
 export default function Report() {
   return (
     <Container maxWidth='lg' sx={{ my: '30px' }}>
+      <img src='/qutlogo.png' alt='qut logo' width='50px' />
       {/* Title */}
       <Box
         sx={{
@@ -16,6 +17,9 @@ export default function Report() {
       >
         <Typography variant='h4' gutterBottom component='div'>
           Skills Report
+        </Typography>
+        <Typography variant='text' gutterBottom component='div' align='right'>
+          22/05/22
         </Typography>
       </Box>
 
@@ -33,7 +37,7 @@ export default function Report() {
               Master of Information Technology
             </Typography>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={4} align='right'>
             <strong>Name:</strong> Byrant Tanadjaya &nbsp;&nbsp;&nbsp;
             <strong>Student ID:</strong>
             10576843
@@ -50,13 +54,12 @@ export default function Report() {
       <Box
         sx={{
           flexGrow: 1,
-          borderBottom: '2px solid black',
           paddingBottom: '30px'
         }}
       >
         <Grid item xs={12}>
           <Typography
-            variant='subtitle1'
+            variant='h6'
             sx={{ fontWeight: 'bold', paddingTop: '20px' }}
           >
             Course Experience &#38; Skills
@@ -85,6 +88,7 @@ export default function Report() {
                 paddingTop: '20px',
                 textDecoration: 'underline'
               }}
+              align='right'
             >
               Semester 2
             </Typography>
@@ -92,17 +96,18 @@ export default function Report() {
         </Grid>
 
         <Grid item xs={12} md={6}>
+          {/* Assessment title and date */}
           <Grid container>
             <Grid item xs={11}>
               <Typography variant='subtitle1' sx={{ fontWeight: 'bold' }}>
                 Project Plan
               </Typography>
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs={1} align='right'>
               <Typography variant='text'>11/03/22</Typography>
             </Grid>
           </Grid>
-
+          {/* Criteria */}
           <List dense={true}>
             <ListItem>
               <ListItemText primary='1) Integrate advanced specialist disciplinary knowledge and skills in the context of an industry project ' />
@@ -120,13 +125,47 @@ export default function Report() {
         </Grid>
       </Box>
 
-      <Box sx={{ marginTop: '30px' }}>
-        <Box sx={{ textAlign: 'center', lineHeight: '0.5' }}>
-          <img src='/signature.png' alt='Karen Jen' width='230px' />
-          <p>Karen Jen</p>
-          <p>University Registrar</p>
-        </Box>
-      </Box>
+      {/* Footer section */}
+      <Grid container xs={12} sx={{ marginTop: '30px' }}>
+        {/* signature */}
+        <Grid sx={{ display: 'flex' }} xs={8} align='left'>
+          <Box sx={{ textAlign: 'center', lineHeight: '0.5' }}>
+            <p>APPROVED</p>
+            <img src='/signature.png' alt='Karen Jen' width='180px' />
+            <p>Karen Jen</p>
+            <p>University Registrar</p>
+          </Box>
+        </Grid>
+        {/* QUT address */}
+        <Grid
+          sx={{
+            // marginTop: '70px',
+            display: 'flex',
+            justifyContent: 'flex-end'
+          }}
+          xs={4}
+        >
+          <Box
+            sx={{
+              textAlign: 'left',
+              lineHeight: '0.5',
+              borderLeft: '2px solid black',
+              paddingLeft: '30px'
+            }}
+          >
+            <Typography
+              variant='subtitle1'
+              sx={{ fontWeight: 'bold' }}
+              gutterBottom={true}
+            >
+              Queensland University of Technology
+            </Typography>
+            <Typography gutterBottom={true}>GPO Box 2434</Typography>
+            <Typography gutterBottom={true}>Brisbane, QLD 4001</Typography>
+            <Typography>www.qut.edu.au/</Typography>
+          </Box>
+        </Grid>
+      </Grid>
     </Container>
   );
 }
