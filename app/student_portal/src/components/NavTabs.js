@@ -29,11 +29,11 @@ export default function NavTabs() {
       <Tabs
         value={value}
         onChange={handleChange}
-        // TabIndicatorProps={{
-        //   style: {
-        //     display: 'none'
-        //   }
-        // }}
+        TabIndicatorProps={{
+          style: {
+            display: 'none'
+          }
+        }}
         aria-label='nav tabs example'
       >
         <LinkTab label='View Reports' pathname='/' />
