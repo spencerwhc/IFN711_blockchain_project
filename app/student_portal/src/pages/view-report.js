@@ -4,6 +4,7 @@ import CustomTable from '../components/CustomTable';
 import ActionTableButton from '../components/ActionTableButtons';
 
 export default function View() {
+  console.log('inside view');
   const columnDefs = [
     {
       headerName: 'Report ID',

@@ -30,6 +30,8 @@ export default function Generate() {
     setGenerateCancel(true);
   };
   const closeGenerateError = () => setGenerateCancel(false);
+
+  console.log('inside generate');
   return (
     <Layout>
       <div style={{ display: 'flex' }}>
