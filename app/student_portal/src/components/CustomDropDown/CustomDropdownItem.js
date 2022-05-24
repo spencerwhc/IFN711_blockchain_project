@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import { Row, Col } from 'react-bootstrap';
-import styles from '../../styles/Home.module.css';
-import ItemTable from './ItemTable';
-import { ChevronCompactDown, ChevronCompactUp } from 'react-bootstrap-icons';
+import { useState } from "react";
+import { Row, Col } from "react-bootstrap";
+import styles from "../../styles/Home.module.css";
+import ItemTable from "./ItemTable";
+import { ChevronCompactDown, ChevronCompactUp } from "react-bootstrap-icons";
 
 export default function CustomDropdownItem(props) {
     const [show1, setShow1] = useState(false);
+    const { unit } = props;
     return (
         <Row
             className={
@@ -18,7 +19,7 @@ export default function CustomDropdownItem(props) {
                     : styles.hideCustomDropDownItem
             }
         >
-            <Col style={{ display: props.show ? 'block' : 'none' }} md lg={11}>
+            <Col style={{ display: props.show ? "block" : "none" }} md lg={11}>
                 <button
                     className={styles.customDropdownItembtn}
                     onClick={() => {
@@ -32,7 +33,14 @@ export default function CustomDropdownItem(props) {
                     {props.title}
                 </button>
             </Col>
-            <Col style={{ display: props.show ? 'block' : 'none', marginTop: '20px' }} md lg={1}>
+            <Col
+                style={{
+                    display: props.show ? "block" : "none",
+                    marginTop: "20px",
+                }}
+                md
+                lg={1}
+            >
                 {show1 ? (
                     <ChevronCompactDown color="black" size={22} />
                 ) : (
@@ -46,6 +54,7 @@ export default function CustomDropdownItem(props) {
                         : styles.hideCustomDropdownTable
                 }
                 counter={props.counter}
+                unit={unit}
             />
         </Row>
     );
