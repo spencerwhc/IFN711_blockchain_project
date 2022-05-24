@@ -1,16 +1,17 @@
-import { Row, Col } from 'react-bootstrap';
-import { useState } from 'react';
-import styles from '../styles/Home.module.css';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableRow from '@mui/material/TableRow';
-import TableContainer from '@mui/material/TableContainer';
-import RefreshIcon from '@mui/icons-material/Refresh';
+import { Row, Col } from "react-bootstrap";
+import { useState } from "react";
+import styles from "../styles/Home.module.css";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableRow from "@mui/material/TableRow";
+import TableContainer from "@mui/material/TableContainer";
+import RefreshIcon from "@mui/icons-material/Refresh";
+import ActionTableButton from "../components/ActionTableButtons";
 
 export default function CustomTable(props) {
-    const [rotate, setRotate] = useState('');
-    if (props.rowFormat === 'generate') {
+    const [rotate, setRotate] = useState("");
+    if (props.rowFormat === "generate") {
         return (
             <div className={styles.customTableBox}>
                 <div className={styles.customTableHeader}>
@@ -18,7 +19,9 @@ export default function CustomTable(props) {
                         {props.col.map((c) => {
                             return (
                                 <Col>
-                                    <p className={styles.customTableHeaderP}>{c.headerName}</p>
+                                    <p className={styles.customTableHeaderP}>
+                                        {c.headerName}
+                                    </p>
                                 </Col>
                             );
                         })}
@@ -33,15 +36,17 @@ export default function CustomTable(props) {
                     >
                         <Table
                             sx={{
-                                height: 'max-content',
+                                height: "max-content",
                             }}
                         >
                             <TableBody>
                                 {props.row.map((r) => {
                                     return (
-                                        <TableRow style={{ height: '172px' }}>
+                                        <TableRow style={{ height: "172px" }}>
                                             <TableCell>{r.id}</TableCell>
-                                            <TableCell>{r.achievement}</TableCell>
+                                            <TableCell>
+                                                {r.achievement}
+                                            </TableCell>
                                         </TableRow>
                                     );
                                 })}
@@ -51,40 +56,42 @@ export default function CustomTable(props) {
                 </div>
             </div>
         );
-    } else if (props.rowFormat === 'view') {
+    } else if (props.rowFormat === "view") {
         return (
             <div>
                 <div className={styles.customTableHeader}>
-                    <div style={{ display: 'flex' }}>
+                    <div style={{ display: "flex" }}>
                         {props.col.map((c) => {
                             return (
-                                <div style={{ flex: '1' }}>
-                                    <p className={styles.customTableHeaderP}>{c.headerName}</p>
+                                <div style={{ flex: "1" }}>
+                                    <p className={styles.customTableHeaderP}>
+                                        {c.headerName}
+                                    </p>
                                 </div>
                             );
                         })}
                     </div>
                 </div>
-                <div style={{ display: 'flex', marginLeft: '35px' }}>
-                    <div style={{ display: 'inline-block', width: '96%' }}>
+                <div style={{ display: "flex", marginLeft: "35px" }}>
+                    <div style={{ display: "inline-block", width: "96%" }}>
                         <hr className={styles.customHR} />
                     </div>
                     <div>
                         <RefreshIcon
                             onClick={() => {
-                                setRotate('spin 2s linear infinite');
+                                setRotate("spin 2s linear infinite");
                                 setTimeout(() => {
-                                    setRotate('');
+                                    setRotate("");
                                 }, 3000);
                             }}
                             sx={{
                                 animation: rotate,
-                                '@keyframes spin': {
-                                    '0%': {
-                                        transform: 'rotate(360deg)',
+                                "@keyframes spin": {
+                                    "0%": {
+                                        transform: "rotate(360deg)",
                                     },
-                                    '100%': {
-                                        transform: 'rotate(0deg)',
+                                    "100%": {
+                                        transform: "rotate(0deg)",
                                     },
                                 },
                             }}
@@ -99,17 +106,21 @@ export default function CustomTable(props) {
                     >
                         <Table
                             sx={{
-                                height: 'max-content',
+                                height: "max-content",
                             }}
                         >
                             <TableBody>
                                 {props.row.map((r) => {
                                     return (
-                                        <TableRow style={{ height: '172px' }}>
+                                        <TableRow style={{ height: "172px" }}>
                                             <TableCell>{r.id}</TableCell>
                                             <TableCell>{r.status}</TableCell>
                                             <TableCell>{r.date}</TableCell>
-                                            <TableCell width="25%">{r.action}</TableCell>
+                                            <TableCell width="25%">
+                                                <ActionTableButton
+                                                    reportID={r.id}
+                                                />
+                                            </TableCell>
                                         </TableRow>
                                     );
                                 })}
@@ -120,6 +131,6 @@ export default function CustomTable(props) {
             </div>
         );
     } else {
-        return '';
+        return "";
     }
 }

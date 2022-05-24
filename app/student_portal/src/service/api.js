@@ -11,3 +11,7 @@ export const getReport = async (id) => {
 export const getStudent = async (id) => {
     return await axios.get(`http://localhost:8080/api/student/${id}`);
 };
+
+export const getStudentReports = async (id) => {
+    return await axios.get(`http://localhost:8080/api/student/${id}/reports`);
+};

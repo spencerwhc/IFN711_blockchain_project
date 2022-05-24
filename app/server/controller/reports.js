@@ -34,11 +34,11 @@ const getStudentReports = async (studentId) => {
     const reports = await Promise.all(
         ReportIds.map(async (id) => {
             const assessment = await getReport(id);
-            return assessment;
+            return JSON.parse(assessment);
         })
     );
 
-    console.log(reports);
+    return reports;
 };
 
 getStudentReports("n10864989");
