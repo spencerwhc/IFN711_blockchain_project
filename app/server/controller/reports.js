@@ -10,11 +10,11 @@ const getSkillReport = async (reportId) => {
 
     const assessments = await Promise.all(
         AssessmentIDs.map(async (id) => {
-            const assessment = getAssessment(id);
-            return assessment;
+            const assessment = await getAssessment(id);
+
+            return JSON.parse(assessment);
         })
     );
-
     return assessments;
 };
 
@@ -41,7 +41,6 @@ const getStudentReports = async (studentId) => {
     return reports;
 };
 
-getStudentReports("n10864989");
 module.exports = {
     getSkillReport,
     getSutudent,

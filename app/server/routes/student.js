@@ -16,7 +16,6 @@ router.get("/:id/reports", async (req, res) => {
     const { id } = req.params;
 
     const reports = await getStudentReports(id);
-    console.log(reports, "testteste");
 
     res.send(reports);
 });

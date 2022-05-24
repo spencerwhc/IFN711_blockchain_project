@@ -7,11 +7,17 @@ import ReportFooter from "../components/ReportFooter";
 import ReportAssessment from "../components/ReportAssessment";
 // Import Services
 import { getReport, getStudent } from "../service/api";
+import { useParams } from "react-router";
+
 export default function Report() {
+    const { id } = useParams();
+
     const [reportData, setReportData] = useState();
     const [studnetData, setStudentData] = useState();
     const [isLoadingStudent, setIsLoadingStudent] = useState(false);
+    const [isLoadingReport, setIsLoadingReport] = useState(false);
 
+    // Fetch student information
     useEffect(() => {
         console.log("here");
         const getStudentData = async () => {
@@ -30,25 +36,28 @@ export default function Report() {
         getStudentData();
     }, [setStudentData]);
 
+    // Fetch report information
     useEffect(() => {
         const getreport = async () => {
             try {
-                const result = await getReport("R0001");
+                setIsLoadingReport(true);
+                const result = await getReport(id);
                 const { data } = result;
 
                 setReportData(data);
             } catch (error) {
                 console.log(error);
+            } finally {
+                setIsLoadingReport(false);
             }
         };
         getreport();
-    }, [setReportData]);
+    }, [setReportData, id]);
 
-    // return <div>hi</div>;
-
+    if (!reportData && !studnetData) return null;
     return (
         <>
-            {isLoadingStudent ? (
+            {isLoadingStudent && isLoadingReport ? (
                 <div>Loading</div>
             ) : (
                 <>
@@ -142,7 +151,11 @@ export default function Report() {
                             </Grid>
 
                             {/* Assessment 1 */}
-                            <ReportAssessment />
+                            {reportData
+                                ? reportData.map((ass) => (
+                                      <ReportAssessment data={ass} />
+                                  ))
+                                : null}
                         </Box>
 
                         {/* Footer section */}

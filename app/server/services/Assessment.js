@@ -173,8 +173,8 @@ const addReportToStudent = (studentId, reportId) => {
 
 // Get an assessment
 // exports.getAssessment = function(ast) {
-const getAssessment = (ast) => {
-    return evaluateTransaction("get", ast.ID);
+const getAssessment = (AssessmentID) => {
+    return evaluateTransaction("get", AssessmentID);
 };
 
 // Add a report
