@@ -135,7 +135,7 @@ class QUTAssessment extends Contract {
         ];
         const reports = [
             {
-                ID: "R0001",
+                ID: "_GLzzG_E",
                 StudentID: "n10864989",
                 AssessmentIDs: [
                     "n10864989_IFN711_22se1_1",
@@ -145,7 +145,7 @@ class QUTAssessment extends Contract {
                 createdDate: "22/05/2022",
             },
             {
-                ID: "R0002",
+                ID: "XO4sxend",
                 StudentID: "n10864989",
                 AssessmentIDs: [
                     "n10864989_IFN666_21se2_1",

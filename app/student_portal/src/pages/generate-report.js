@@ -17,6 +17,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import { difference, uniq } from "lodash";
 import { postReport } from "../service/api";
+import { nanoid } from "nanoid";
 
 const demoData2022 = [
     {
@@ -174,9 +175,10 @@ export default function Generate() {
         }
     };
 
+    // To do: set current date
     const onGenerate = async () => {
         const reportData = {
-            ID: "R0003",
+            ID: nanoid(8),
             StudentID: "n10864989",
             AssessmentIDs: assessmentList,
             Status: "Pending",
