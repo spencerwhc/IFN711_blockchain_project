@@ -1,8 +1,5 @@
-import { Box, Container, Typography, Grid, Button } from "@mui/material";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ReportFooter from "../components/ReportFooter";
+import { Typography, Grid, List, ListItem, ListItemText } from "@mui/material";
+
 export default function ReportAssessment({ data }) {
     console.log(data);
     return (

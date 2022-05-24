@@ -112,7 +112,10 @@ export default function CustomTable(props) {
                             <TableBody>
                                 {props.row.map((r) => {
                                     return (
-                                        <TableRow style={{ height: "172px" }}>
+                                        <TableRow
+                                            style={{ height: "172px" }}
+                                            key={r.id}
+                                        >
                                             <TableCell>{r.id}</TableCell>
                                             <TableCell>{r.status}</TableCell>
                                             <TableCell>{r.date}</TableCell>
