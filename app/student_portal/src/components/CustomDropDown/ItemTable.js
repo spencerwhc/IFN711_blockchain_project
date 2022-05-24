@@ -60,7 +60,7 @@ export default function ItemTable(props) {
                             setTableData(rowData);
                         }}
                     >
-                        {unit.assessments[0].UnitName}
+                        {unit.assessments[0].AssessmentName}
                     </button>
                     <Checkbox
                         style={{ color: clicked1 ? "White" : "Black" }}
@@ -91,7 +91,7 @@ export default function ItemTable(props) {
                             setTableData(rowData1);
                         }}
                     >
-                        {unit.assessments[1].UnitName}
+                        {unit.assessments[1].AssessmentName}
                     </button>
                     <Checkbox
                         style={{ color: clicked2 ? "White" : "Black" }}

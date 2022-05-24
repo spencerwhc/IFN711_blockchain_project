@@ -18,7 +18,7 @@ class QUTAssessment extends Contract {
                 Name: "Ho Sze Wong",
                 Degree: "Master of Information Technology",
                 Major: "Software Development",
-                ReportIds: ["R0001", "R0002"],
+                ReportIds: ["a83c33", "0ef12d"],
             },
         ];
         const assessments = [
@@ -135,7 +135,7 @@ class QUTAssessment extends Contract {
         ];
         const reports = [
             {
-                ID: "_GLzzG_E",
+                ID: "a83c33",
                 StudentID: "n10864989",
                 AssessmentIDs: [
                     "n10864989_IFN711_22se1_1",
@@ -145,7 +145,7 @@ class QUTAssessment extends Contract {
                 createdDate: "22/05/2022",
             },
             {
-                ID: "XO4sxend",
+                ID: "0ef12d",
                 StudentID: "n10864989",
                 AssessmentIDs: [
                     "n10864989_IFN666_21se2_1",

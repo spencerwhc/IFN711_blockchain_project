@@ -17,7 +17,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import { difference, uniq } from "lodash";
 import { postReport } from "../service/api";
-import { nanoid } from "nanoid";
+import { customAlphabet } from "nanoid";
 
 const demoData2022 = [
     {
@@ -177,13 +177,16 @@ export default function Generate() {
 
     // To do: set current date
     const onGenerate = async () => {
+        const randomId = customAlphabet("1234567890abcdef", 6);
         const reportData = {
-            ID: nanoid(8),
+            ID: randomId(),
             StudentID: "n10864989",
             AssessmentIDs: assessmentList,
             Status: "Pending",
             createdDate: "25/05/2022",
         };
+
+        console.log(reportData);
         try {
             await postReport(reportData);
         } catch (error) {
