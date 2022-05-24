@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import Layout from "../components/layout";
 import CustomTable from "../components/CustomTable";
-import ActionTableButton from "../components/ActionTableButtons";
 
 // Import Services
 import { getStudentReports } from "../service/api";
