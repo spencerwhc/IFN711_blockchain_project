@@ -55,6 +55,7 @@ export default function CustomDropdownItem(props) {
                 }
                 counter={props.counter}
                 unit={unit}
+                assList={props.assList}
             />
         </Row>
     );

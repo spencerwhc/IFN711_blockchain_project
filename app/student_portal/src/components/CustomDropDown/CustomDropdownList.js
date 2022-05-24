@@ -45,6 +45,7 @@ export default function CustomDropdownList(props) {
                           showTable={showAll}
                           counter={props.counter}
                           unit={unit}
+                          assList={props.assList}
                       />
                   ))
                 : null}

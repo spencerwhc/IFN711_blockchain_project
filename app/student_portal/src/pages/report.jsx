@@ -43,6 +43,7 @@ export default function Report() {
                 setIsLoadingReport(true);
                 const result = await getReport(id);
                 const { data } = result;
+                console.log(data, "data");
 
                 setReportData(data);
             } catch (error) {

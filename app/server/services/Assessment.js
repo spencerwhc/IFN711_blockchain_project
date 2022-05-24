@@ -185,7 +185,8 @@ const addReport = (rpt) => {
         rpt.ID,
         rpt.StudentID,
         JSON.stringify(rpt.AssessmentIDs),
-        rpt.createdDate
+        rpt.createdDate,
+        rpt.Status
     );
 };
 
@@ -205,6 +206,8 @@ module.exports = {
     getStudent,
     prettyJSONString,
     getAssessment,
+    addReport,
+    addReportToStudent,
 };
 
 // // Initial data for a test

@@ -242,7 +242,7 @@ class QUTAssessment extends Contract {
         return InfoJSON.toString();
     }
 
-    async createReport(ctx, ID, StudentID, AssessmentIDs, createdDate) {
+    async createReport(ctx, ID, StudentID, AssessmentIDs, createdDate, Status) {
         const exists = await this.myAssetExists(ctx, ID);
         if (exists) {
             throw new Error(`The report: ${ID} already exists`);
@@ -251,7 +251,7 @@ class QUTAssessment extends Contract {
             ID,
             StudentID,
             AssessmentIDs,
-            State: "Pending",
+            Status,
             createdDate,
         };
         const reportBuffer = Buffer.from(JSON.stringify(report));
@@ -267,7 +267,7 @@ class QUTAssessment extends Contract {
             //throw new Error(`The Report: ${reportID} does not exist`);
         } else {
             const report = JSON.parse(reportAsBytes.toString());
-            report.State = "Approved";
+            report.Status = "Approved";
             const buffer = Buffer.from(JSON.stringify(report));
             await ctx.stub.putState(reportID, buffer);
             return true;

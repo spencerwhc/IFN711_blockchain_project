@@ -15,6 +15,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
+import { difference, uniq } from "lodash";
+import { postReport } from "../service/api";
 
 const demoData2022 = [
     {
@@ -148,9 +150,7 @@ const demoData2021 = [
 ];
 export default function Generate() {
     const [counter, setCounter] = useState(0);
-    const likeDislikeMutate = (n) => {
-        setCounter((oldCount) => oldCount + n);
-    };
+    const [assessmentList, setAssessmentList] = useState([]);
     const [generate, setgenerate] = useState(false);
     const [generateCancel, setGenerateCancel] = useState(false);
     const openGenerate = () => setgenerate(true);
@@ -160,6 +160,34 @@ export default function Generate() {
         setGenerateCancel(true);
     };
     const closeGenerateError = () => setGenerateCancel(false);
+
+    const likeDislikeMutate = (n) => {
+        setCounter((oldCount) => oldCount + n);
+    };
+
+    const updateAssessmentList = (id, action) => {
+        if (action === "add") {
+            setAssessmentList(uniq([...assessmentList, id]));
+        } else {
+            const list = difference(assessmentList, [id]);
+            setAssessmentList(list);
+        }
+    };
+
+    const onGenerate = async () => {
+        const reportData = {
+            ID: "R0003",
+            StudentID: "n10864989",
+            AssessmentIDs: assessmentList,
+            Status: "Pending",
+            createdDate: "25/05/2022",
+        };
+        try {
+            await postReport(reportData);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <Layout>
@@ -226,7 +254,10 @@ export default function Generate() {
                         }}
                     >
                         <Link to="/">
-                            <button className={styles.customModalButtonBlue}>
+                            <button
+                                className={styles.customModalButtonBlue}
+                                onClick={onGenerate}
+                            >
                                 Yes
                             </button>
                         </Link>
@@ -270,11 +301,13 @@ export default function Generate() {
             <Row>
                 <CustomDropdownList
                     counter={(n) => likeDislikeMutate(n)}
+                    assList={updateAssessmentList}
                     title="Semester 1, 2022"
                     data={demoData2022}
                 />
                 <CustomDropdownList
                     counter={(n) => likeDislikeMutate(n)}
+                    assList={updateAssessmentList}
                     title="Semester 2, 2021"
                     data={demoData2021}
                 />

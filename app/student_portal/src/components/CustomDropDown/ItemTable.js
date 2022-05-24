@@ -67,8 +67,10 @@ export default function ItemTable(props) {
                         onChange={(e) => {
                             if (e.target.checked) {
                                 props.counter(1);
+                                props.assList(unit.assessments[0].ID, "add");
                             } else {
                                 props.counter(-1);
+                                props.assList(unit.assessments[0].ID, "remove");
                             }
                         }}
                     />
@@ -96,8 +98,10 @@ export default function ItemTable(props) {
                         onChange={(e) => {
                             if (e.target.checked) {
                                 props.counter(1);
+                                props.assList(unit.assessments[1].ID, "add");
                             } else {
                                 props.counter(-1);
+                                props.assList(unit.assessments[1].ID, "remove");
                             }
                         }}
                     />

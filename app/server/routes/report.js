@@ -1,7 +1,7 @@
 // Import libraries
 require("express-async-errors");
 const router = require("express").Router();
-const { getSkillReport } = require("../controller/reports");
+const { getSkillReport, addNewReport } = require("../controller/reports");
 
 /** Report endpoint */
 router.get("/:id", async (req, res) => {
@@ -10,6 +10,11 @@ router.get("/:id", async (req, res) => {
     const report = await getSkillReport(id);
 
     res.send(report);
+});
+
+router.post("/", async (req, res) => {
+    const response = await addNewReport(req.body);
+    res.send(response);
 });
 
 module.exports = router;

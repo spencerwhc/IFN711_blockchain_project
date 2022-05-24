@@ -2,14 +2,22 @@ const {
     getReport,
     getStudent,
     getAssessment,
+    addReport,
+    addReportToStudent,
 } = require("../services/Assessment");
 
 const getSkillReport = async (reportId) => {
     const report = await getReport(reportId);
+
     const { AssessmentIDs } = JSON.parse(report);
+    // console.log(JSON.parse(AssessmentIDs), "AssessmentIDs");
+
+    let AssIds;
+    if (typeof AssessmentIDs === "string") AssIds = JSON.parse(AssessmentIDs);
+    else AssIds = AssessmentIDs;
 
     const assessments = await Promise.all(
-        AssessmentIDs.map(async (id) => {
+        AssIds.map(async (id) => {
             const assessment = await getAssessment(id);
 
             return JSON.parse(assessment);
@@ -41,10 +49,22 @@ const getStudentReports = async (studentId) => {
     return reports;
 };
 
+const addNewReport = async (data) => {
+    const { StudentID, ID } = data;
+    try {
+        await addReport(data);
+        await addReportToStudent(StudentID, ID);
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
+
 module.exports = {
     getSkillReport,
     getSutudent,
     getStudentReports,
+    addNewReport,
 };
 
 // // Initial data for a test
