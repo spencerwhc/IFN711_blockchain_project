@@ -3,7 +3,7 @@ require("express-async-errors");
 const router = require("express").Router();
 const { getSkillReport } = require("../controller/reports");
 
-/** Health check endpoint */
+/** Report endpoint */
 router.get("/:id", async (req, res) => {
     const { id } = req.params;
 

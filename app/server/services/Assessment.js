@@ -167,6 +167,10 @@ const addAssessment = (ast, std) => {
         });
 };
 
+const addReportToStudent = (studentId, reportId) => {
+    return submitTransaction("updateReportToStd", studentId, reportId);
+};
+
 // Get an assessment
 // exports.getAssessment = function(ast) {
 const getAssessment = (ast) => {
@@ -180,7 +184,8 @@ const addReport = (rpt) => {
         "createReport",
         rpt.ID,
         rpt.StudentID,
-        JSON.stringify(rpt.AssessmentIDs)
+        JSON.stringify(rpt.AssessmentIDs),
+        rpt.createdDate
     );
 };
 
@@ -198,6 +203,8 @@ const getReport = (reportId) => {
 module.exports = {
     getReport,
     getStudent,
+    prettyJSONString,
+    getAssessment,
 };
 
 // // Initial data for a test
@@ -227,16 +234,17 @@ module.exports = {
 //     ],
 // };
 
-// For test
-// getStudent(std);
-// addAssessment(ast, std); //showing in the command looks str inside str but you can get the object from the front-end in this way
+// // For test
+// getStudent("n10864989");
+// addReportToStudent("n10864989", "R0002");
+// showing in the command looks str inside str but you can get the object from the front-end in this way
 
 // now get is included in add
 // getAssessment(ast);
 
 // we can include get to display here too
-// addReport(rpt);
+// addReport(newReport);
 
 // we can include get to display here too
 // approveReport(rpt);
-// getReport("0001");
+// getReport("R0001");

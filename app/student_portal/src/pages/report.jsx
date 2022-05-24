@@ -3,6 +3,7 @@ import { Box, Container, Typography, Grid, Button } from "@mui/material";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import ReportFooter from "../components/ReportFooter";
 // Import Services
 import { getReport, getStudent } from "../service/api";
 export default function Report() {
@@ -11,10 +12,12 @@ export default function Report() {
     const [isLoadingStudent, setIsLoadingStudent] = useState(false);
 
     useEffect(() => {
-        const getreport = async () => {
+        console.log("here");
+        const getStudentData = async () => {
             try {
                 setIsLoadingStudent(true);
-                const result = await getStudent("n10837353");
+
+                const result = await getStudent("n10864989");
                 const { data } = result;
                 setStudentData(data);
             } catch (error) {
@@ -23,13 +26,13 @@ export default function Report() {
                 setIsLoadingStudent(false);
             }
         };
-        getreport();
+        getStudentData();
     }, [setStudentData]);
 
     useEffect(() => {
         const getreport = async () => {
             try {
-                const result = await getReport("0001");
+                const result = await getReport("R0001");
                 const { data } = result;
 
                 setReportData(data);
@@ -39,6 +42,8 @@ export default function Report() {
         };
         getreport();
     }, [setReportData]);
+
+    // return <div>hi</div>;
 
     return (
         <>
@@ -200,65 +205,7 @@ export default function Report() {
                         </Box>
 
                         {/* Footer section */}
-                        <Grid container sx={{ marginTop: "30px" }}>
-                            {/* signature */}
-                            <Grid
-                                item
-                                sx={{ display: "flex" }}
-                                xs={8}
-                                align="left"
-                            >
-                                <Box
-                                    sx={{
-                                        textAlign: "center",
-                                        lineHeight: "0.5",
-                                    }}
-                                >
-                                    <p>APPROVED</p>
-                                    <img
-                                        src="/signature.png"
-                                        alt="Karen Jen"
-                                        width="180px"
-                                    />
-                                    <p>Karen Jen</p>
-                                    <p>University Registrar</p>
-                                </Box>
-                            </Grid>
-                            {/* QUT address */}
-                            <Grid
-                                item
-                                sx={{
-                                    // marginTop: '70px',
-                                    display: "flex",
-                                    justifyContent: "flex-end",
-                                }}
-                                xs={4}
-                            >
-                                <Box
-                                    sx={{
-                                        textAlign: "left",
-                                        lineHeight: "0.5",
-                                        borderLeft: "2px solid black",
-                                        paddingLeft: "30px",
-                                    }}
-                                >
-                                    <Typography
-                                        variant="subtitle1"
-                                        sx={{ fontWeight: "bold" }}
-                                        gutterBottom={true}
-                                    >
-                                        Queensland University of Technology
-                                    </Typography>
-                                    <Typography gutterBottom={true}>
-                                        GPO Box 2434
-                                    </Typography>
-                                    <Typography gutterBottom={true}>
-                                        Brisbane, QLD 4001
-                                    </Typography>
-                                    <Typography>www.qut.edu.au/</Typography>
-                                </Box>
-                            </Grid>
-                        </Grid>
+                        <ReportFooter />
                     </Container>
                 </>
             )}

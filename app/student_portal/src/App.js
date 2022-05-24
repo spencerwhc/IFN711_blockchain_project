@@ -6,18 +6,8 @@ import View from "./pages/view-report";
 import "./App.css";
 import Report from "./pages/report";
 import Header from "./components/Header";
-// Import Services
-// import { checkHealth } from './service/api';
 
 function App() {
-    // const handleclick = async () => {
-    //   try {
-    //     const result = await checkHealth();
-    //     console.log(result.data, 'resultresult');
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
     return (
         <BrowserRouter>
             <Routes>
@@ -44,9 +34,3 @@ const WithNav = () => (
         <Outlet />
     </>
 );
-// return (
-//   <div className='App'>
-//     <button onClick={handleclick}>Click to check health</button>
-//   </div>
-// );
-// }
