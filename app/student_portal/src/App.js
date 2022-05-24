@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 
 import Generate from './pages/generate-report';
 import View from './pages/view-report';
@@ -22,17 +22,30 @@ function App() {
   console.log('inside App.js');
   return (
     <BrowserRouter>
-      <Header />
       <Routes>
-        <Route path='/' element={<View />} />
-        <Route path='/generate' element={<Generate />} />
-        <Route path='/report/:id' element={<Report />} />
+        <Route element={<WithNav />}>
+          <Route path='/' element={<View />} />
+        </Route>
+        <Route element={<WithNav />}>
+          <Route path='/generate' element={<Generate />} />
+        </Route>
+        <Route element={<WithoutNav />}>
+          <Route path='/report/:id' element={<Report />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
+
+const WithoutNav = () => <Outlet />;
+const WithNav = () => (
+  <>
+    <Header />
+    <Outlet />
+  </>
+);
 // return (
 //   <div className='App'>
 //     <button onClick={handleclick}>Click to check health</button>

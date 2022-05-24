@@ -136,10 +136,6 @@ export default function Generate() {
           counter={(n) => likeDislikeMutate(n)}
           title='Semester 2, 2022'
         />
-        <CustomDropdownList
-          counter={(n) => likeDislikeMutate(n)}
-          title='Semester 1, 2022'
-        />
       </Row>
     </Layout>
   );
