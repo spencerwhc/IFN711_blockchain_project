@@ -57,7 +57,7 @@ export default function View() {
             <p className={styles.viewReportTitle}>
                 Table of reports that have been generated
             </p>
-            <CustomTable rowFormat={"view"} col={columnDefs} row={rowDatas} />
+            <CustomTable rowFormat={"view"} col={columnDefs} row={rowDatas.reverse()} />
         </Layout>
     );
 }
