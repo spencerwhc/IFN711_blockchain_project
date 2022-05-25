@@ -18,8 +18,6 @@ import Button from '@mui/material/Button';
 import { difference, uniq } from 'lodash';
 import { postReport } from '../service/api';
 import { customAlphabet } from 'nanoid';
-import jsPDF from 'jspdf';
-import domtoimage from 'dom-to-image';
 
 const demoData2022 = [
   {
@@ -143,16 +141,7 @@ const demoData2021 = [
   }
 ];
 
-const downPdf = () => {
-  var pdf = new jsPDF('', 'pt', 'a4');
-  var input = document.body;
-  if (document) {
-    domtoimage.toPng(input).then((pageData) => {
-      pdf.addImage(pageData, 'PNG', 20, 20, 550, 160);
-      pdf.save('AssessmentReport.pdf');
-    });
-  }
-};
+
 
 export default function Generate() {
   const [counter, setCounter] = useState(0);
@@ -201,10 +190,6 @@ export default function Generate() {
 
   return (
     <Layout>
-      <div id='all'>
-        <button id='renderPdf' onClick={downPdf}>
-          DOWNLOAD PDF
-        </button>
         <div style={{ display: 'flex' }}>
           <div style={{ flex: '4' }}></div>
           <div style={{ flex: '10' }}>
@@ -322,7 +307,7 @@ export default function Generate() {
             data={demoData2021}
           />
         </Row>
-      </div>
+  
     </Layout>
   );
 }
