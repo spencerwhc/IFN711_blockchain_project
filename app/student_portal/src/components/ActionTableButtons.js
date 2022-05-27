@@ -1,6 +1,6 @@
 import { ButtonGroup } from "react-bootstrap";
 import styles from "../styles/Home.module.css";
-import { EyeFill, ShareFill, CloudArrowDownFill } from "react-bootstrap-icons";
+import { EyeFill, ShareFill } from "react-bootstrap-icons";
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -11,20 +11,39 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
+
 import { Link } from "react-router-dom";
+import { shareReport } from "../service/api";
 
 export default function ActionTableButton({ reportID }) {
     const [share, setShare] = useState(false);
     const [shareConfirm, setShareConfirm] = useState(false);
-    let navigate = useNavigate();
+    const [receiver, setReceiver] = useState();
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState();
 
-    const openView = () => navigate("/report/R00001", { replace: false });
     const openShare = () => setShare(true);
     const closeShare = () => setShare(false);
     const openShareConfirm = () => {
         setShare(false);
         setShareConfirm(true);
+    };
+
+    const onShare = async () => {
+        try {
+            setLoading(true);
+            const result = await shareReport({ email: receiver });
+            const { data } = result;
+
+            console.log(data);
+        } catch (error) {
+            setMessage("Sorry, failed to share report. Please try again later");
+            console.log(error);
+        } finally {
+            setLoading(false);
+            openShareConfirm();
+        }
     };
     const closeShareConfirm = () => setShareConfirm(false);
     return (
@@ -56,12 +75,15 @@ export default function ActionTableButton({ reportID }) {
                     />
                 </Box>
                 <DialogTitle sx={{ fontWeight: "600", textAlign: "center" }}>
-                    Report Shared
+                    {!!message
+                        ? "Failed to share"
+                        : "Successfully shared the report"}
                 </DialogTitle>
                 <DialogContent sx={{ textAlign: "center" }}>
                     <DialogContentText id="alert-dialog-description">
-                        Report successfully shared! A confirmation email has
-                        been sent to your email.
+                        {!!message
+                            ? message
+                            : "Report successfully shared! A confirmation email has been sent to your email"}
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions
@@ -98,6 +120,7 @@ export default function ActionTableButton({ reportID }) {
                         share the document with.
                     </DialogContentText>
                     <TextField
+                        required
                         autoFocus
                         margin="dense"
                         id="name"
@@ -105,11 +128,16 @@ export default function ActionTableButton({ reportID }) {
                         type="email"
                         fullWidth
                         variant="standard"
+                        onChange={(e) => setReceiver(e.target.value)}
                     />
                 </DialogContent>
                 <DialogActions className={styles.MuiDialogActions}>
-                    <Button onClick={openShareConfirm} variant="contained">
-                        Share
+                    <Button onClick={onShare} variant="contained">
+                        {loading ? (
+                            <CircularProgress color="inherit" size={18} />
+                        ) : (
+                            "Share"
+                        )}
                     </Button>
                 </DialogActions>
             </Dialog>
