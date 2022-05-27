@@ -4,7 +4,7 @@ const {
     getAssessment,
     addReport,
     addReportToStudent,
-} = require("../services/Assessment");
+} = require("../services/blockchain");
 
 const getSkillReport = async (reportId) => {
     const report = await getReport(reportId);
@@ -53,7 +53,6 @@ const addNewReport = async (data) => {
     try {
         await addReport(data);
         await addReportToStudent(StudentID, ID);
-
     } catch (error) {
         console.log(error);
         return error;
