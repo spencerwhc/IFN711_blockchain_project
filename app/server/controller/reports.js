@@ -6,6 +6,8 @@ const {
     addReportToStudent,
 } = require("../services/blockchain");
 
+const { sendEtherealEmail } = require("../services/nodemail");
+
 const getSkillReport = async (reportId) => {
     const report = await getReport(reportId);
 
@@ -59,9 +61,18 @@ const addNewReport = async (data) => {
     }
 };
 
+const shareReport = async (data) => {
+    const { email } = data;
+
+    const URL = await sendEtherealEmail(email);
+
+    return URL;
+};
+
 module.exports = {
     getSkillReport,
     getSutudent,
     getStudentReports,
     addNewReport,
+    shareReport,
 };
