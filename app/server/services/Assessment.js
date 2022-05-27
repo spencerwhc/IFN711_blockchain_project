@@ -4,8 +4,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-"use strict";
-
 const { Gateway, Wallets } = require("fabric-network");
 const path = require("path");
 const fs = require("fs");
@@ -121,11 +119,6 @@ async function evaluateTransaction(funcName, ...args) {
             console.log(`\n--> Evaluate Transaction: ${funcName}`);
             buffer = await contract.evaluateTransaction(funcName, ...args);
             console.log("Transaction evaluated");
-            const bufferObject = JSON.parse(buffer.toString());
-            // if you keep the object from the front-end
-            // console.log(bufferObject)
-            // console.log(JSON.parse(bufferObject.Criteria));
-            // this toString makes the array looks like a string when it prints
             console.log(`*** Result: ${prettyJSONString(buffer.toString())}`);
         } finally {
             gateway.disconnect();
@@ -208,46 +201,6 @@ module.exports = {
     getAssessment,
     addReport,
     addReportToStudent,
+    addAssessment,
+    approveReport,
 };
-
-// // Initial data for a test
-// const std = {
-//     ID: "n10837353",
-//     Name: "Yena Park",
-//     Degree: "Master of Information Technology",
-//     Major: "Computer Science",
-//     AssessmentIDs: ["n10837353_IFN711_22se1_1", "n10837353_IFN666_21se1_2"],
-// };
-// const rpt = {
-//     ID: "0002",
-//     StudentID: "n10837353",
-//     AssessmentIDs: ["n10837353_IFN711_22se1_1", "n10837353_IFN666_21se1_2"],
-//     Status: "Pending",
-// };
-// // New mock data for a test
-// const ast = {
-//     ID: "n10837353_IFN680_21se2_22",
-//     UnitId: "IFN680_21se2_1",
-//     UnitName: "Artificial Intelligent",
-//     AssessmentName: "Sokovan Programming",
-//     Criteria: ["Implementation (60%)", "Report (40%)"],
-//     Achievement: [
-//         "The overall level of functionality successfully implemented",
-//         "The robustness of the application",
-//     ],
-// };
-
-// // For test
-// getStudent("n10864989");
-// addReportToStudent("n10864989", "R0002");
-// showing in the command looks str inside str but you can get the object from the front-end in this way
-
-// now get is included in add
-// getAssessment(ast);
-
-// we can include get to display here too
-// addReport(newReport);
-
-// we can include get to display here too
-// approveReport(rpt);
-// getReport("R0001");

@@ -40,7 +40,7 @@ export default function ItemTable(props) {
 
     useEffect(() => {
         setTableData(rowData);
-    }, []);
+    }, [rowData]);
     return (
         <div style={props.style} className={props.className}>
             <ButtonGroup style={{ width: "100%" }}>

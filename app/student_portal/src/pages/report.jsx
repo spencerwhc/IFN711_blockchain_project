@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import { Box, Container, Typography, Grid, Button } from "@mui/material";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
 import ReportFooter from "../components/ReportFooter";
 import ReportAssessment from "../components/ReportAssessment";
+
 // Import Services
 import { getReport, getStudent } from "../service/api";
 import { useParams } from "react-router";
