@@ -184,7 +184,7 @@ export default function Generate() {
             StudentID: "n10864989",
             AssessmentIDs: assessmentList,
             Status: "Approved",
-            createdDate: "25/05/2022",
+            createdDate: new Date().toLocaleDateString(),
         };
 
         console.log(reportData);

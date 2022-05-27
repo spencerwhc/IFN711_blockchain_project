@@ -6,8 +6,8 @@ import ReportAssessment from "../components/ReportAssessment";
 // Import Services
 import { getReport, getStudent } from "../service/api";
 import { useParams } from "react-router";
-import jsPDF from 'jspdf';
-import domtoimage from 'dom-to-image';
+import jsPDF from "jspdf";
+import domtoimage from "dom-to-image";
 
 export default function Report() {
     const { id } = useParams();
@@ -26,6 +26,7 @@ export default function Report() {
 
                 const result = await getStudent("n10864989");
                 const { data } = result;
+                console.log(data);
                 setStudentData(data);
             } catch (error) {
                 console.log(error);
@@ -56,18 +57,18 @@ export default function Report() {
     }, [setReportData, id]);
 
     const downPdf = () => {
-        var pdf = new jsPDF('p', 'mm', 'a4');
+        var pdf = new jsPDF("p", "mm", "a4");
         var input = document.body;
         var width = pdf.internal.pageSize.getWidth();
         var height = pdf.internal.pageSize.getHeight();
 
         if (document) {
-          domtoimage.toPng(input).then((pageData) => {
-            pdf.addImage(pageData, 'PNG', 0, 0, width, height);
-            pdf.save(`Skills_Report_${id}.pdf`);
-          });
+            domtoimage.toPng(input).then((pageData) => {
+                pdf.addImage(pageData, "PNG", 0, 0, width, height);
+                pdf.save(`Skills_Report_${id}.pdf`);
+            });
         }
-      };
+    };
 
     if (!reportData && !studnetData) return null;
     return (
@@ -84,7 +85,9 @@ export default function Report() {
                             pt: "20px",
                         }}
                     >
-                        <Button variant="contained" onClick={downPdf}>Download</Button>
+                        <Button variant="contained" onClick={downPdf}>
+                            Download
+                        </Button>
                     </Box>
                     <Container maxWidth="lg" sx={{ my: "30px" }}>
                         <img src="/qutlogo.png" alt="qut logo" width="50px" />
@@ -109,7 +112,7 @@ export default function Report() {
                                 component="div"
                                 align="right"
                             >
-                                22/05/22
+                                {reportData.createdDate}
                             </Typography>
                         </Box>
 
@@ -167,7 +170,7 @@ export default function Report() {
 
                             {/* Assessment 1 */}
                             {reportData
-                                ? reportData.map((ass) => (
+                                ? reportData.assessments.map((ass) => (
                                       <ReportAssessment data={ass} />
                                   ))
                                 : null}

@@ -9,7 +9,7 @@ const {
 const getSkillReport = async (reportId) => {
     const report = await getReport(reportId);
 
-    const { AssessmentIDs } = JSON.parse(report);
+    const { AssessmentIDs, createdDate } = JSON.parse(report);
 
     let AssIds;
     if (typeof AssessmentIDs === "string") AssIds = JSON.parse(AssessmentIDs);
@@ -22,7 +22,7 @@ const getSkillReport = async (reportId) => {
             return JSON.parse(assessment);
         })
     );
-    return assessments;
+    return { createdDate, assessments };
 };
 
 const getSutudent = async (studentId) => {
