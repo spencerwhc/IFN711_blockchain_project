@@ -19,14 +19,13 @@ export default function Report() {
 
     // Fetch student information
     useEffect(() => {
-        console.log("here");
         const getStudentData = async () => {
             try {
                 setIsLoadingStudent(true);
 
                 const result = await getStudent("n10864989");
                 const { data } = result;
-                console.log(data);
+
                 setStudentData(data);
             } catch (error) {
                 console.log(error);
@@ -43,8 +42,8 @@ export default function Report() {
             try {
                 setIsLoadingReport(true);
                 const result = await getReport(id);
+
                 const { data } = result;
-                console.log(data, "data");
 
                 setReportData(data);
             } catch (error) {
@@ -112,7 +111,7 @@ export default function Report() {
                                 component="div"
                                 align="right"
                             >
-                                {reportData.createdDate}
+                                {reportData ? reportData.createdDate : null}
                             </Typography>
                         </Box>
 

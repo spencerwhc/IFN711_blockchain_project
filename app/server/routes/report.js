@@ -10,9 +10,7 @@ const {
 /** Report endpoint */
 router.get("/:id", async (req, res) => {
     const { id } = req.params;
-
     const report = await getSkillReport(id);
-
     res.send(report);
 });
 
