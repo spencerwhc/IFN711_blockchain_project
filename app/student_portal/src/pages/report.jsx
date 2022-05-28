@@ -6,8 +6,7 @@ import ReportAssessment from "../components/ReportAssessment";
 // Import Services
 import { getReport, getStudent } from "../service/api";
 import { useParams } from "react-router";
-import jsPDF from "jspdf";
-import domtoimage from "dom-to-image";
+import domToPdf from "dom-to-pdf";
 
 export default function Report() {
     const { id } = useParams();
@@ -56,17 +55,13 @@ export default function Report() {
     }, [setReportData, id]);
 
     const downPdf = () => {
-        var pdf = new jsPDF("p", "mm", "a4");
-        var input = document.body;
-        var width = pdf.internal.pageSize.getWidth();
-        var height = pdf.internal.pageSize.getHeight();
-
-        if (document) {
-            domtoimage.toPng(input).then((pageData) => {
-                pdf.addImage(pageData, "PNG", 0, 0, width, height);
-                pdf.save(`Skills_Report_${id}.pdf`);
-            });
-        }
+        var input = document.getElementById("main");
+        var options = {
+            filename: `Skills_Report_${id}`,
+        };
+        domToPdf(input, options, function (pdf) {
+            console.log("done");
+        });
     };
 
     if (!reportData && !studnetData) return null;
@@ -88,7 +83,7 @@ export default function Report() {
                             Download
                         </Button>
                     </Box>
-                    <Container maxWidth="lg" sx={{ my: "30px" }}>
+                    <Container maxWidth="lg" sx={{ my: "30px" }} id="main">
                         <img src="/qutlogo.png" alt="qut logo" width="50px" />
                         {/* Title */}
                         <Box
