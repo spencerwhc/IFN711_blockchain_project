@@ -83,6 +83,7 @@ export default function CustomTable(props) {
                                 setTimeout(() => {
                                     setRotate("");
                                 }, 3000);
+                                window.location.reload();
                             }}
                             sx={{
                                 animation: rotate,
