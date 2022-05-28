@@ -20,6 +20,11 @@ pushd ../test-network
 ./network.sh up createChannel -ca -s couchdb
 ./network.sh deployCC -ccn qut -ccv 1 -cci initLedger -ccl javascript -ccp ${CC_SRC_PATH}
 popd
+node enrollAdmin.js
+node registerUser.js
+pushd ../app/server
+npm start
+popd
 
 cat <<EOF
 
